@@ -1,0 +1,56 @@
+
+#intro-example {
+    height: 400px;
+    /*– Để hình tự co giãn bằng kích thước màn hình, bạn đặt thêm thuộc tính background-size và gán giá trị là cover.*/
+    background-size: cover;
+    /*hình k bị lặp*/
+    background-repeat:no-repeat;
+}
+
+/* Height for devices larger than 992px */
+@media (min-width: 992px) {
+    #intro-example {
+        height: 600px;
+    }
+}
+
+.header-nav {
+    background-color: white;
+}
+
+.nav-item {
+    position: relative;
+}
+
+
+/* sup  */
+.nav-item ul {
+    list-style: none;
+
+}
+
+.nav-item-sup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #fff;
+    color: #000;
+    width: 220px;
+    left: -50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-align: center;
+}
+
+.nav-item-sup li {
+    padding: 10px;
+
+}
+
+.nav-item:hover .nav-item-sup {
+    display: block;
+}
+.nav-item li:hover {
+    background-color: #316348;
+}
+
+

@@ -9,9 +9,9 @@ function fibonacci(number: number):number {
 }
 
 for (let i = 1; i<=5; i++){
-    array.push(fibonacci(i))
-    // console.log(fibonacci(i))
-    sumFibonacci+= fibonacci(i)
+    array.push(fibonacci(i));
+    sumFibonacci+= fibonacci(i);
 }
+
 console.log(array.toString());
-console.log("Tổng các số fibonacci là: " + sumFibonacci);
+console.log(`Tổng các số fibonacci là: ${sumFibonacci}`);

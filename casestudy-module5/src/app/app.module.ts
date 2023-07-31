@@ -8,6 +8,9 @@ import { FooterComponent } from './footer/footer.component';
 import { ListContractComponent } from './list-contract/list-contract.component';
 import { AddContractComponent } from './add-contract/add-contract.component';
 import { UpdateContractComponent } from './update-contract/update-contract.component';
+import { ListCustomerComponent } from './list-customer/list-customer.component';
+import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { CreateCustomerComponent } from './create-customer/create-customer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { UpdateContractComponent } from './update-contract/update-contract.compo
     FooterComponent,
     ListContractComponent,
     AddContractComponent,
-    UpdateContractComponent
+    UpdateContractComponent,
+    ListCustomerComponent,
+    UpdateCustomerComponent,
+    CreateCustomerComponent
   ],
   imports: [
     BrowserModule,

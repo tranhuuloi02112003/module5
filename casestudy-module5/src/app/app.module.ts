@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListContractComponent } from './list-contract/list-contract.component';
 import { AddContractComponent } from './add-contract/add-contract.component';
+import { UpdateContractComponent } from './update-contract/update-contract.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AddContractComponent } from './add-contract/add-contract.component';
     HeaderComponent,
     FooterComponent,
     ListContractComponent,
-    AddContractComponent
+    AddContractComponent,
+    UpdateContractComponent
   ],
   imports: [
     BrowserModule,

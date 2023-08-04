@@ -1,0 +1,6 @@
+tsc.cmd fibonacci.ts
+node fibonacci.js
+
+ng new xxxxx Để tạo mới 1 ứng dụng Angular
+ng g c xxxx Để tạo 1  component
+ng s -o Để chạy ứng dụng

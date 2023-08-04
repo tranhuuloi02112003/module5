@@ -1,5 +1,4 @@
-import {Component, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {EventEmitter} from 'protractor';
+import {Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-countdown-timer',
@@ -9,21 +8,63 @@ import {EventEmitter} from 'protractor';
 export class CountdownTimerComponent implements OnInit, OnChanges {
   message = '';
   remainingTime: number;
-  @Input() seconds = 11;
-  // @ts-ignore
-  @Output() finish = new EventEmitter<boolean>();
+  @Input()
+  seconds = 11;
+  @Output()
+  finish = new EventEmitter<boolean>();
   private intervalId = 0;
 
-  constructor() {
+  ngOnChanges(changes: SimpleChanges) {
+    if ('seconds' in changes) {
+      let v = changes.seconds.currentValue;
+      v = typeof v === 'undefined' ? 11 : v;
+      const vFixed = Number(v);
+      this.seconds = Number.isNaN(vFixed) ? 11 : vFixed;
+    }
   }
 
-  ngOnInit(): void {
+  clearTimer() {
+    clearInterval(this.intervalId);
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if ('seconds' in changes) {
-  //     let v = changes.seconds.currentValue;
-  //   }
+  ngOnInit() {
+    this.reset();
+  }
+
+  // ngOnDestroy() {
+  //   this.clearTimer();
   // }
+
+  start() {
+    this.countDown();
+    if (this.remainingTime <= 0) {
+      this.remainingTime = this.seconds;
+    }
+  }
+
+  stop() {
+    this.clearTimer();
+    this.message = `Holding at T-${this.remainingTime} seconds`;
+  }
+
+  reset() {
+    this.clearTimer();
+    this.remainingTime = this.seconds;
+    this.message = `Click start button to start the Countdown`;
+  }
+
+  private countDown() {
+    this.clearTimer();
+    this.intervalId = window.setInterval(() => {
+      this.remainingTime -= 1;
+      if (this.remainingTime === 0) {
+        this.message = 'Blast off!';
+        this.clearTimer();
+        this.finish.emit(true);
+      } else {
+        this.message = `T-${this.remainingTime} seconds and counting`;
+      }
+    }, 1000);
+  }
 
 }

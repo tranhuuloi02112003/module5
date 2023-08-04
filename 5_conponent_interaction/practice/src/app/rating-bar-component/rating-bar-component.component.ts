@@ -1,5 +1,4 @@
 import {Component, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {EventEmitter} from 'protractor';
 import {IRatingUnit} from '../irating-unit';
 
 @Component({

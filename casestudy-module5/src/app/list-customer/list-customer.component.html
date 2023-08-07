@@ -1,47 +1,21 @@
 <h1 style="text-align: center">Danh sách nhân viên</h1>
 <table class="table">
-  <thead>
   <tr>
     <td>Id</td>
     <td>Tên nhân viên</td>
     <td>Ngày sinh</td>
     <td>Cmnd</td>
-    <td>Lương</td>
     <td>Sdt</td>
     <td>Email</td>
     <td>Địa chỉ</td>
   </tr>
-  </thead>
-  <tr>
-    <td>1</td>
-    <td>Tran van a</td>
-    <td>11/11/2023</td>
-    <td>086826231312</td>
-    <td>9tr</td>
-    <td>a@gmail.com</td>
-    <td>Đà nẳng</td>
-  </tr>
-</table><h1 style="text-align: center">Danh sách nhân viên</h1>
-<table class="table">
-  <thead>
-  <tr>
-    <td>Id</td>
-    <td>Tên nhân viên</td>
-    <td>Ngày sinh</td>
-    <td>Cmnd</td>
-    <td>Lương</td>
-    <td>Sdt</td>
-    <td>Email</td>
-    <td>Địa chỉ</td>
-  </tr>
-  </thead>
-  <tr>
-    <td>1</td>
-    <td>Tran van a</td>
-    <td>11/11/2023</td>
-    <td>086826231312</td>
-    <td>9tr</td>
-    <td>a@gmail.com</td>
-    <td>Đà nẳng</td>
+  <tr *ngFor="let customer of customers">
+    <td>{{customer.customerId}}</td>
+    <td>{{customer.customerName}}</td>
+    <td>{{customer.customerBirthday}}</td>
+    <td>{{customer.customerCMND}}</td>
+    <td>{{customer.customerPhone}}</td>
+    <td>{{customer.customerEmail}}</td>
+    <td>{{customer.customerAddress}}</td>
   </tr>
 </table>

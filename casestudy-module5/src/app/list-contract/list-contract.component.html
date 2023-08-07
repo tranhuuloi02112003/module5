@@ -1,7 +1,5 @@
-
 <h1 style="text-align: center">Danh sách hợp đồng</h1>
 <table class="table">
-  <thead>
   <tr>
     <td>Id</td>
     <td>Ngày làm hợp đồng</td>
@@ -9,12 +7,11 @@
     <td>Tiền đặt cọc</td>
     <td>Tổng tiền</td>
   </tr>
-  </thead>
-  <tr>
-    <td>1</td>
-    <td>20/12/2022</td>
-    <td>21/12/2023</td>
-    <td>1000000</td>
-    <td>10000000</td>
+  <tr *ngFor="let contract of contracts">
+    <td>{{contract.contractId}}</td>
+    <td>{{contract.contractDate}}</td>
+    <td>{{contract.contractEndDate}}</td>
+    <td>{{contract.contractDeposits}}</td>
+    <td>{{contract.contractTotalMoney}}</td>
   </tr>
 </table>

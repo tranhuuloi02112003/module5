@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Contract} from './contract';
+import {Contract} from '../../model/contract';
+import {ContractService} from '../../service/contract.service';
 
 @Component({
   selector: 'app-list-contract',
@@ -7,46 +8,11 @@ import {Contract} from './contract';
   styleUrls: ['./list-contract.component.css']
 })
 export class ListContractComponent implements OnInit {
-  contracts: Contract[] = [
-    {
-      contractId: 1,
-      contractDate: '20/02/2022',
-      contractEndDate: '01/03/2023',
-      contractDeposits: 200000,
-      contractTotalMoney: 2000000
-    },
-    {
-      contractId: 1,
-      contractDate: '20/02/2022',
-      contractEndDate: '01/03/2023',
-      contractDeposits: 200000,
-      contractTotalMoney: 2000000
-    },
-    {
-      contractId: 1,
-      contractDate: '20/02/2022',
-      contractEndDate: '01/03/2023',
-      contractDeposits: 200000,
-      contractTotalMoney: 2000000
-    },
-    {
-      contractId: 1,
-      contractDate: '20/02/2022',
-      contractEndDate: '01/03/2023',
-      contractDeposits: 200000,
-      contractTotalMoney: 2000000
-    },
-    {
-      contractId: 1,
-      contractDate: '20/02/2022',
-      contractEndDate: '01/03/2023',
-      contractDeposits: 200000,
-      contractTotalMoney: 2000000
-    }
-  ];
+  contracts: Contract[] = this._contractService.findAllContracts();
 
   ngOnInit(): void {
   }
-  constructor() {
+  // tslint:disable-next-line:variable-name
+  constructor(private _contractService: ContractService) {
   }
 }

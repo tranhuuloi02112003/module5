@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f78bcbf6-b1a1-40dc-a306-8e47089e327b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../~$seStudy_FuramaResort_Module5.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module5/src/app/create-customer/create-customer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module5/src/app/create-customer/create-customer.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +33,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/CODEGYM/module5/5_conponent_interaction/practice",
+    "last_opened_file_path": "D:/CODEGYM/module5/CaseStudy_module5",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,6 +66,7 @@
       <workItem from="1690809672416" duration="1952000" />
       <workItem from="1690972797714" duration="655000" />
       <workItem from="1691144970108" duration="34000" />
+      <workItem from="1691410091332" duration="1593000" />
     </task>
     <servers />
   </component>

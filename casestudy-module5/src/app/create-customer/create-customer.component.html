@@ -5,73 +5,95 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Add Customer</h3>
-            <form>
+
+            <form [formGroup]="createForm" (ngSubmit)="onCreate()">
               <div class="row">
                 <div class="col-md-6 mb-4">
-
                   <div class="form-outline">
-                    <input type="text" id="id" class="form-control form-control-lg"/>
+                    <input type="text" id="id" class="form-control form-control-lg"
+                           formControlName="customerId"/>
                     <label class="form-label" for="id">Id</label>
                   </div>
-
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.customerId.dirty && createForm.controls.customerId.errors?.pattern">
+                    Wrong format KH-XXXX(0-9)!
+                  </div>
                 </div>
-
               </div>
               <div class="row">
                 <div class="col-md-6 mb-4">
-
                   <div class="form-outline">
-                    <input type="text" id="hoTen" class="form-control form-control-lg"/>
+                    <input type="text" id="hoTen" class="form-control form-control-lg"
+                           formControlName="customerName"/>
                     <label class="form-label" for="hoTen">Họ tên</label>
+                    <div class="alert alert-danger" role = "alert"
+                         *ngIf="createForm.controls.customerName.dirty && createForm.controls.customerName.errors?.required">
+                      Name not empty!
+                    </div>
                   </div>
-
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" id="ngaySinh" class="form-control form-control-lg"/>
+                    <input type="date" id="ngaySinh" class="form-control form-control-lg"
+                    formControlName="customerBirthday"/>
                     <label class="form-label" for="ngaySinh">Ngày sinh</label>
                   </div>
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.customerBirthday.dirty && createForm.controls.customerBirthday.errors?.pattern">
+                    Wrong format dd/mm/yyyy!
+                  </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-md-6 mb-4 d-flex align-items-center">
-
                   <div class="form-outline datepicker w-100">
-                    <input type="text" class="form-control form-control-lg" id="cmnd"/>
+                    <input type="text" class="form-control form-control-lg" id="cmnd"
+                    formControlName="customerCMND"/>
                     <label for="cmnd" class="form-label">Cmnd</label>
                   </div>
-
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.customerCMND.dirty && createForm.controls.customerCMND.errors?.pattern">
+                    Wrong format XXXXXXXXX!
+                  </div>
                 </div>
                 <div class="col-md-6 mb-4 d-flex align-items-center">
-
                   <div class="form-outline datepicker w-100">
-                    <input type="text" class="form-control form-control-lg" id="sdt"/>
+                    <input type="text" class="form-control form-control-lg" id="sdt"
+                    formControlName="customerPhone"/>
                     <label for="sdt" class="form-label">Sdt</label>
                   </div>
-
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.customerPhone.dirty && createForm.controls.customerPhone.errors?.pattern">
+                    Wrong format !
+                  </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-md-6 mb-4 pb-2">
-
                   <div class="form-outline">
-                    <input type="email" id="email" class="form-control form-control-lg"/>
+                    <input type="email" id="email" class="form-control form-control-lg"
+                    formControlName="customerEmail"/>
                     <label class="form-label" for="email">Email</label>
                   </div>
-
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.customerEmail.dirty && createForm.controls.customerEmail.errors?.email">
+                    Wrong format !
+                  </div>
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
-
                   <div class="form-outline">
-                    <input type="tel" id="diaChi" class="form-control form-control-lg"/>
+                    <input type="tel" id="diaChi" class="form-control form-control-lg"
+                    formControlName="customerAddress"/>
                     <label class="form-label" for="diaChi">Địa chỉ</label>
+                  </div>
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.customerAddress.dirty && createForm.controls.customerAddress.errors?.required">
+                    Wrong format !
                   </div>
                 </div>
               </div>
               <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit"/>
+                <input class="btn btn-primary btn-lg" type="submit" value="Create" [disabled]="!createForm.valid"/>
               </div>
             </form>
           </div>

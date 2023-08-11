@@ -6,51 +6,58 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Add Contract</h3>
-            <form>
+            <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="col-md-6 mb-4">
-
                   <div class="form-outline">
-                    <input type="text" id="id" class="form-control form-control-lg"/>
+                    <input type="text" id="id" class="form-control form-control-lg" formControlName="contractId"/>
                     <label class="form-label" for="id">Id</label>
                   </div>
-
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.contractId.dirty && createForm.controls.contractId.errors?.pattern">Wrong format HD-XXXX(0-9)!
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="date" id="firstName" class="form-control form-control-lg"/>
+                    <input type="date" id="firstName" class="form-control form-control-lg" formControlName="contractDate"/>
                     <label class="form-label" for="firstName">Contract date</label>
                   </div>
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.contractDate.dirty && createForm.controls.contractDate.errors?.pattern">Wrong format dd/mm/yyyy!
+                  </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="date" id="area" class="form-control form-control-lg"/>
+                    <input type="date" id="area" class="form-control form-control-lg" formControlName="contractEndDate" />
                     <label class="form-label" for="area">Contract end date</label>
+                  </div>
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.contractEndDate.dirty && createForm.controls.contractEndDate.errors?.pattern">Wrong format dd/mm/yyyy!
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-4 d-flex align-items-center">
-
                   <div class="form-outline datepicker w-100">
-                    <input type="number" class="form-control form-control-lg" id="numberFloors"/>
+                    <input type="number" class="form-control form-control-lg" id="numberFloors" formControlName="contractDeposits"/>
                     <label for="numberFloors" class="form-label">Tiền đặt cọc</label>
                   </div>
-
+                  <div class="alert alert-danger" role = "alert"
+                       *ngIf="createForm.controls.contractDeposits.dirty && createForm.controls.contractDeposits.errors?.pattern">Deposits>=0!!
+                  </div>
                 </div>
                 <div class="col-md-6 mb-4 d-flex align-items-center">
-
                   <div class="form-outline datepicker w-100">
-                    <input type="number" class="form-control form-control-lg" id="maxPeople"/>
+                    <input type="number" class="form-control form-control-lg" id="maxPeople" formControlName="contractTotalMoney"/>
                     <label for="maxPeople" class="form-label">Tổng tiền</label>
                   </div>
-
                 </div>
               </div>
               <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit"/>
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+<!--                // [disabled]="!createForm.valid"-->
               </div>
             </form>
           </div>

@@ -1,10 +1,10 @@
 <h1>Chỉnh sửa sản phẩm</h1>
-<form [formGroup]="productForm" (ngSubmit)="submit()">
+<form *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="submit()" >
   <table>
-    <tr>
-      <td>Mã sản phẩm:</td>
-      <td><input type="number" formControlName="id"></td>
-    </tr>
+<!--    <tr>-->
+<!--      <td>Mã sản phẩm:</td>-->
+<!--      <td><input type="number" formControlName="id"></td>-->
+<!--    </tr>-->
     <tr>
       <td>Tên sản phẩm:</td>
       <td><input type="text" formControlName="name"></td>
@@ -16,6 +16,14 @@
     <tr>
       <td>Mô tả về sản phẩm</td>
       <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td>Category</td>
+      <td>
+        <select id="category" formControlName="category">
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+      </td>
     </tr>
     <tr>
       <td><input type="submit" value="Update"></td>

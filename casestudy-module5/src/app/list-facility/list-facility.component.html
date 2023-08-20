@@ -8,14 +8,16 @@
     <td>Số người tối đa</td>
     <td>Chi phí thuê</td>
     <td>Trạng thái</td>
+    <td>Chức năng</td>
   </tr>
   <tr *ngFor="let facility of facilitys">
-    <td>{{facility.serviceId}}</td>
-    <td>{{facility.serviceName}}</td>
-    <td>{{facility.serviceArea}}</td>
-    <td>{{facility.serviceFloors}}</td>
-    <td>{{facility.servicePeopleMax}}</td>
-    <td>{{facility.serviceRentalCost}}</td>
-    <td>{{facility.serviceStatus}}</td>
+    <td>{{facility.facilityId}}</td>
+    <td>{{facility.facilityName}}</td>
+    <td>{{facility.facilityArea}}</td>
+    <td>{{facility.facilityFloors}}</td>
+    <td>{{facility.facilityPeopleMax}}</td>
+    <td>{{facility.facilityRentalCost}}</td>
+    <td>{{facility.facilityStatus}}</td>
+    <td><a [routerLink]="['/facility/delete',facility.facilityId]">Xóa</a></td>
   </tr>
 </table>

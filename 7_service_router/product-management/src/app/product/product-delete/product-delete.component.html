@@ -1,24 +1,24 @@
 <h1>Xóa sản phẩm</h1>
-<form [formGroup]="productForm" (ngSubmit)="submit()">
+
   <table>
     <tr>
       <td>Mã sản phẩm:</td>
-      <td><input type="number" formControlName="id" readonly></td>
+      <td>{{product.id}}</td>
     </tr>
     <tr>
       <td>Tên sản phẩm:</td>
-      <td><input type="text" formControlName="name" readonly></td>
+      <td>{{product.name}}</td>
     </tr>
     <tr>
       <td>Giá sản phẩm</td>
-      <td><input type="number" formControlName="price" readonly></td>
+      <td>{{product.price}}</td>
     </tr>
     <tr>
       <td>Mô tả về sản phẩm</td>
-      <td><input type="text" formControlName="description" readonly></td>
+      <td>{{product.description}}</td>
     </tr>
     <tr>
-      <td><input type="submit" value="Delete"></td>
+      <button (click)="deleteProduct(id)">Xoá</button>
     </tr>
   </table>
-</form>
+

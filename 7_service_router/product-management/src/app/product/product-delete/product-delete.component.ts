@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ProductService} from '../../service/product.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Product} from '../../model/product';
 
 @Component({
   selector: 'app-product-delete',
@@ -9,8 +10,8 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
   styleUrls: ['./product-delete.component.css']
 })
 export class ProductDeleteComponent implements OnInit {
-  productForm: FormGroup;
   id: number;
+  product: Product;
 
   // tslint:disable-next-line:variable-name max-line-length
   constructor(private _formBuilder: FormBuilder, private _productService: ProductService, private _activatedRoute: ActivatedRoute, private _router: Router) {
@@ -18,20 +19,22 @@ export class ProductDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = +paramMap.get('id');
+        this.id = +paramMap.get('id');
+      }
+    );
+
+    this._productService.findById(this.id).subscribe(product => {
+      this.product = product;
     });
-    this.productForm = this._formBuilder.group({
-      id: [this._productService.findById(this.id).id],
-      name: [this._productService.findById(this.id).name],
-      price: [this._productService.findById(this.id).price],
-      description: [this._productService.findById(this.id).description]
-    });
+    // console.log(this.product);
   }
 
-  submit() {
-    this._productService.delete(this.id);
-    alert('Delete thành công');
-    this._router.navigate(['/product/list']);
+  deleteProduct(id: number) {
+    this._productService.delete(this.id).subscribe(() => {
+      alert('Delete thành công');
+      this._router.navigate(['/product/list']);
+    }, error => {
+      console.log(error);
+    });
   }
-
 }

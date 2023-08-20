@@ -14,6 +14,9 @@ import {ListFacilityComponent} from './list-facility/list-facility.component';
 import { CreateFacilityComponent } from './create-facility/create-facility.component';
 import { UpdateFacilityComponent } from './update-facility/update-facility.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DeleteFacilityComponent } from './delete-facility/delete-facility.component';
+import { DeleteContractComponent } from './delete-contract/delete-contract.component';
+import { DeleteCustomerComponent } from './delete-customer/delete-customer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     CreateContractComponent,
     ListFacilityComponent,
     CreateFacilityComponent,
-    UpdateFacilityComponent
+    UpdateFacilityComponent,
+    DeleteFacilityComponent,
+    DeleteContractComponent,
+    DeleteCustomerComponent
   ],
   imports: [
     BrowserModule,

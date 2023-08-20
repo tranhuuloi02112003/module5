@@ -18,6 +18,14 @@
       <td><input type="text" formControlName="description"></td>
     </tr>
     <tr>
+      <td>Category</td>
+      <td>
+        <select id="category" formControlName="category">
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
       <td></td>
       <td><input type="submit" value="Submit"></td>
     </tr>

@@ -19,7 +19,10 @@ export class ProductListComponent implements OnInit {
   }
 
   getAll() {
-    this.products = this._productService.getAll();
+    // this.products = this._productService.getAll();
+    this._productService.getAll().subscribe(products => {
+      this.products = products;
+    });
   }
 
 }

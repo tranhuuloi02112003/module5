@@ -7,30 +7,33 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  private URL_IPA = 'http://localhost:3000/products';
+
   // tslint:disable-next-line:variable-name
   constructor(private _httpClien: HttpClient) {
   }
 
   getAll(): Observable<Product[]> {
-    return this._httpClien.get<Product[]>('http://localhost:3000/products');
+    return this._httpClien.get<Product[]>(this.URL_IPA);
   }
 
   // @ts-ignore
   saveProduct(product): Observable<Product> {
-    return this._httpClien.post<Product>('http://localhost:3000/products', product);
+    return this._httpClien.post<Product>(this.URL_IPA, product);
   }
 
   findById(id: number): Observable<Product> {
-    return this._httpClien.get<Product>('http://localhost:3000/products/' + id);
+    return this._httpClien.get<Product>(this.URL_IPA + id);
   }
 
   updateProduct(product: Product) {
-    return this._httpClien.put<Product>('http://localhost:3000/products/' + product.id, product);
+    return this._httpClien.put<Product>(this.URL_IPA + product.id, product);
   }
 
   delete(id: number) {
-    return this._httpClien.delete<Product>('http://localhost:3000/products/' + id);
+    return this._httpClien.delete<Product>(this.URL_IPA + '/' + id);
   }
+
   // this.products = this.products.filter(product => {
   //   return product.id !== id;
   // });

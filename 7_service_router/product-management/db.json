@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 100,
+      "description": "bnbbb",
+      "category": {
+        "name": "IPhone5",
+        "id": 1
+      }
+    },
+    {
+      "id": 3,
+      "name": "AVCB",
+      "price": 123543,
+      "description": "nshicnc",
+      "category": {
+        "name": "IPhone5",
+        "id": 1
+      }
+    },
+    {
+      "id": 4,
+      "name": "sfdxvx",
+      "price": 325346,
+      "description": "sdgxcv",
+      "category": {
+        "id": 2,
+        "name": "Samsung"
+      }
+    },
+    {
+      "id": 5,
+      "name": "1",
+      "price": 1,
+      "description": "1",
+      "category": {
+        "id": 2,
+        "name": "Samsung"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "name": "IPhone5",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Samsung"
+    },
+    {
+      "id": 3,
+      "name": "LG"
+    }
+  ]
+}

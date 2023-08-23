@@ -10,6 +10,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  p = 1;
+  displayStyle = 'none';
+  idProduct: number;
   products: Product[] = [];
 
   // tslint:disable-next-line:variable-name
@@ -17,10 +20,10 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAll();
+    this.getAllProduct();
   }
 
-  getAll() {
+  getAllProduct() {
     // this.products = this._productService.getAll();
     this._productService.getAll().subscribe(products => {
       this.products = products;
@@ -28,9 +31,20 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  // modal(id: number) {
-  //   // @ts-ignore
-  //   this._router.navigate(['/product/modal']);
-  // }
+  openPopup(id: number) {
+    this.displayStyle = 'block';
+    this.idProduct = id;
+  }
+
+  closePopup() {
+    this.displayStyle = 'none';
+  }
+
+  delete() {
+    this._productService.delete(this.idProduct).subscribe(() => {
+      this.closePopup();
+      this.ngOnInit();
+    });
+  }
 
 }

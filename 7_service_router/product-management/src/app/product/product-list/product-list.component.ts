@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../service/product.service';
 import {Product} from '../../model/product';
+import {CategoryService} from '../../service/category.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +13,7 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
   // tslint:disable-next-line:variable-name
-  constructor(private _productService: ProductService) {
+  constructor(private _productService: ProductService, private _categoryService: CategoryService, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,5 +26,11 @@ export class ProductListComponent implements OnInit {
       this.products = products;
     });
   }
+
+
+  // modal(id: number) {
+  //   // @ts-ignore
+  //   this._router.navigate(['/product/modal']);
+  // }
 
 }

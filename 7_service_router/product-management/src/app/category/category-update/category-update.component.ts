@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from '../../service/category.service';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Category} from '../../model/category';
 
 @Component({
   selector: 'app-category-update',
@@ -12,30 +13,44 @@ export class CategoryUpdateComponent implements OnInit {
 
   categoryForm: FormGroup;
   id: number;
+  category: Category;
 
   constructor(private categoryService: CategoryService,
-              private activatedRoute: ActivatedRoute) {
+              // tslint:disable-next-line:variable-name
+              private activatedRoute: ActivatedRoute, private _router: Router, private _formBuilder: FormBuilder) {
+  }
+
+  ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
-      const category = this.getCategory(this.id);
+      this.getCategory(this.id);
       this.categoryForm = new FormGroup({
-        id: new FormControl(category.id),
-        name: new FormControl(category.name),
+        id: new FormControl(),
+        name: new FormControl(),
+      });
+    });
+    // @ts-ignore
+    this.categoryService.findById(this.id).subscribe(category => {
+      this.category = category;
+      this.categoryForm = this._formBuilder.group({
+        id: [this.category.id],
+        name: [this.category.name]
       });
     });
   }
 
-  ngOnInit() {
-  }
-
   getCategory(id: number) {
-    return this.categoryService.findById(id);
+    this.categoryService.findById(id).subscribe(value => {
+      this.category = value;
+    });
   }
 
   updateCategory(id: number) {
     const category = this.categoryForm.value;
-    this.categoryService.updateCategory(id, category);
-    alert('Cập nhật thành công');
+    this.categoryService.updateCategory(id, category).subscribe(value => {
+      console.log(value);
+      this._router.navigate(['category/list']);
+    });
   }
 
 }

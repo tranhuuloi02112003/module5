@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Category} from '../../model/category';
-import { CategoryService } from 'src/app/service/category.service';
+import {CategoryService} from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -16,11 +16,13 @@ export class CategoryListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAll();
+    this.getAllCategory();
   }
 
-  getAll() {
-    this.categories = this._categoryService.getAllCategory();
+  getAllCategory() {
+    this._categoryService.getAllCategory().subscribe(value => {
+      this.categories = value;
+    });
   }
 
 }

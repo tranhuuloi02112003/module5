@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Category} from '../model/category';
+import {Observable} from 'rxjs';
+import {Product} from '../model/product';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,32 +18,30 @@ export class CategoryService {
     id: 3,
     name: 'LG',
   }];
+  private URL_API = 'http://localhost:3000/categories';
 
-  constructor() { }
-
-  getAllCategory() {
-    return this.categories;
+  // tslint:disable-next-line:variable-name
+  constructor(private _httpClien: HttpClient) {
   }
 
-  saveCategory(category) {
-    this.categories.unshift(category);
+  getAllCategory(): Observable<Category[]> {
+    return this._httpClien.get<Category[]>(this.URL_API);
   }
 
-  findById(id: number) {
-    return this.categories.find(category => category.id === id);
+  // @ts-ignore
+  saveCategory(category): Observable<Category> {
+    return this._httpClien.post<Category>(this.URL_API, category);
+  }
+
+  findById(id: number): Observable<Category> {
+    return this._httpClien.get<Product>(this.URL_API + '/' + id);
   }
 
   updateCategory(id: number, category: Category) {
-    for (let i = 0; i < this.categories.length; i++) {
-      if (this.categories[i].id === id) {
-        this.categories[i] = category;
-      }
-    }
+    return this._httpClien.put<Product>(this.URL_API + '/' + category.id, category);
   }
 
   deleteCategory(id: number) {
-    this.categories = this.categories.filter(category => {
-      return category.id !== id;
-    });
+    return this._httpClien.delete<Product>(this.URL_API + '/' + + id);
   }
 }

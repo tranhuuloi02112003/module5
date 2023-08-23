@@ -29,7 +29,7 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories = this.findAllCategory();
+    this.findAllCategory();
     this._activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       // const product = this._productService.findById(this.id);
@@ -57,6 +57,8 @@ export class ProductUpdateComponent implements OnInit {
 
   // @ts-ignore
   findAllCategory(): Category[] {
-    return this._categoryService.getAllCategory();
+    this._categoryService.getAllCategory().subscribe(value => {
+      this.categories = value;
+    });
   }
 }

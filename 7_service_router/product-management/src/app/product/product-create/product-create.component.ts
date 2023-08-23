@@ -21,7 +21,7 @@ export class ProductCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories = this.getAllCategory();
+    this.getAllCategory();
     this.productForm = this._formBuilder.group({
       id: [],
       name: [],
@@ -33,9 +33,9 @@ export class ProductCreateComponent implements OnInit {
 
   submit() {
     const product = this.productForm.value;
-    // @ts-ignore
     this._productService.saveProduct(product).subscribe(() => {
       this.productForm.reset();
+      console.log(product.category);
       alert('Tạo thành công');
       this._router.navigate(['/product/list']);
     }, e => {
@@ -43,8 +43,10 @@ export class ProductCreateComponent implements OnInit {
     });
   }
 
-  getAllCategory(): Category[] {
-    return this._categoryService.getAllCategory();
+  getAllCategory() {
+     this._categoryService.getAllCategory().subscribe(value => {
+      this.categories = value;
+    });
   }
 
 }

@@ -8,6 +8,7 @@ import {ProductUpdateComponent} from './product-update/product-update.component'
 import {ProductDeleteComponent} from './product-delete/product-delete.component';
 import {ProductCreateComponent} from './product-create/product-create.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ModalDeleteProductComponent } from './modal-delete-product/modal-delete-product.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     ProductListComponent,
     ProductUpdateComponent,
     ProductDeleteComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ModalDeleteProductComponent
     // ReactiveFormsModule
   ],
   imports: [
